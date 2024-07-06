@@ -1,0 +1,5 @@
+
+
+React issue recognizing Button comp - 
+https://github.com/parcel-bundler/parcel/issues/8069
+

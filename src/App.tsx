@@ -3,6 +3,9 @@ import { Separator } from "./components/ui/separator";
 import { Github, FileVideo, Upload } from 'lucide-react'
 import { Textarea } from "./components/ui/textarea";
 import { Label } from "./components/ui/label";
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem
+
+ } from "./components/ui/select";
 
 export function App() {
 
@@ -52,12 +55,12 @@ export function App() {
               className="border flex rounded-md aspect-video border-dashed cursor-pointer text-sm flex-col gap-2 items-center justify-center text-muted-foreground hover:bg-primary/10"  
             >
               <FileVideo className="w-4 h-4" />
-              Carregar video
+              Selecione um video
             </label>
             <input type="file" id="video" accept="video/mp4" className="sr-only" />
 
             <Separator />
-            <div className="space-y-2 ">
+            <div className="space-y-2">
               <Label htmlFor="transcription-prompt">Prompt de transcrição</Label>
               <Textarea 
                 id="transcription-prompt" 
@@ -73,7 +76,20 @@ export function App() {
 
           <Separator />
 
-          <form action=""></form>
+          <form className="space-y-6">
+            <div className="space-y-2">
+              <Label> Modelo </Label>
+              <Select defaultValue="gpt3.5">
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="gpt3.5"> GPT 3.5-turbo 16k</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+          </form>
         </aside>
       </main>
     </div>

@@ -1,6 +1,7 @@
 import { Button } from "./components/ui/button";
+import { Slider } from "./components/ui/slider";
 import { Separator } from "./components/ui/separator";
-import { Github, FileVideo, Upload } from 'lucide-react'
+import { Github, FileVideo, Upload, Wand2 } from 'lucide-react'
 import { Textarea } from "./components/ui/textarea";
 import { Label } from "./components/ui/label";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem
@@ -77,9 +78,22 @@ export function App() {
           <Separator />
 
           <form className="space-y-6">
+
+          <div className="space-y-2">
+              <Label> Prompt </Label>
+              <Select>
+                <SelectTrigger>
+                  <SelectValue placeholder="Select a prompt"/>
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="title"> Youtube Title</SelectItem>
+                  <SelectItem value="description"> Video Description </SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
             <div className="space-y-2">
-              <Label> Modelo </Label>
-              <Select defaultValue="gpt3.5">
+              <Label> Model </Label>
+              <Select defaultValue="gpt3.5" disabled>
                 <SelectTrigger>
                   <SelectValue />
                 </SelectTrigger>
@@ -87,7 +101,30 @@ export function App() {
                   <SelectItem value="gpt3.5"> GPT 3.5-turbo 16k</SelectItem>
                 </SelectContent>
               </Select>
+              <span 
+                className="block text-xs text-muted-foreground italic"
+                > You will be able to edit this section soon {`:)`}</span>
             </div>
+
+            <Separator />
+
+            <div className="space-y-4">
+              <Label> Temperature </Label>
+              <Slider
+               min={0}
+               max={1}
+               step={0.025}
+              />
+              <span 
+                className="block text-xs text-muted-foreground italic leading-relaxed"
+                > Higher values tend to create more criative results and more error prone {`:)`}</span>
+            </div>
+
+            <Separator />
+            <Button type="submit" className="w-full">
+              Perform
+              <Wand2 className="w-3 h-3 ml-4"/>
+            </Button>
 
           </form>
         </aside>
